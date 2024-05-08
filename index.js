@@ -30,6 +30,10 @@ app.use('/', require('./router/sign_in'));
 app.use('/', require('./router/data'));
 app.use('/', require('./router/update'));
 
+app.get('/' ,(req,res)=>{
+    res.json("hello") ;
+}) ;
+
 
 app.listen(800, () => {
     console.log('app started successsfuly');
