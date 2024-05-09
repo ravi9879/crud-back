@@ -14,8 +14,8 @@ const { body, validationResult } = require('express-validator');
 router.get('/studs/:user_id', async (req, res) => {
 // router.get('/studs' , async (req , res)=> {
     try { 
-        // const f = await User.find({user_id : req.params.user_id});    // finding all  data from mongo db like (select * in mysql)
-        const f = await User.find({});    // finding all  data from mongo db like (select * in mysql)
+        const f = await User.find({user_id : req.params.user_id});    // finding all  data from mongo db like (select * in mysql)
+        // const f = await User.find({});    // finding all  data from mongo db like (select * in mysql)
         return res.json(f); 
     } catch (error) {
         console.log('error');

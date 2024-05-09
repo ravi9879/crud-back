@@ -4,7 +4,8 @@ const {Schema} = mongoose ;
 const StSchema = new Schema({ 
     sno : {
         type: Number ,
-        required : true 
+        required : true ,
+        unique : true 
     } ,
     // id : {  
     //     type : String,
