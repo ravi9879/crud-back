@@ -5,6 +5,11 @@ const jwt = require('jsonwebtoken');
 const cookiePar = require('cookie-parser') 
 const fetchUser = require('../middleware/fetch_api.js');
 const bcrypt = require('bcrypt')   // same as for mysql  
+const Student = require('../models/Student');
+const Student_Course = require('../models/Student_Course') ;
+const Teacher_Course = require('../models/Teacher_Course') ;
+const Teacher = require('../models/Teacher') ;
+const Course = require('../models/Course') ;
 // const {  student_login, teacher_login } = require('../controllers/adminController.js');
 
 router.post('/login', async (req, res) => {

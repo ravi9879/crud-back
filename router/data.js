@@ -3,6 +3,11 @@ const User = require('../models/Studs')
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt')   // same as for mysql 
+const Student = require('../models/Student');
+const Student_Course = require('../models/Student_Course') ;
+const Teacher_Course = require('../models/Teacher_Course') ;
+const Teacher = require('../models/Teacher') ;
+const Course = require('../models/Course') ;
 
 const salt = 5;
 
