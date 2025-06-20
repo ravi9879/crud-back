@@ -7,9 +7,11 @@ const bcrypt = require('bcrypt')   // same as for mysql
 const salt = 5;
 
 const { body, validationResult } = require('express-validator'); 
-const { student_data, course_data } = require('../controllers/studentcontroller');
-const { teacher_data, teacher_course_data } = require('../controllers/teachercontroller');
-const { marksData } = require('../controllers/courseController');
+// const { student_data, course_data } = require('../controllers/studentcontroller');
+// const { teacher_data, teacher_course_data } = require('../controllers/teachercontroller');
+// const { marksData } = require('../controllers/courseController');
+
+
 router.get('/studs/:user_id', async (req, res) => {
 // router.get('/studs' , async (req , res)=> {
     try { 
@@ -44,10 +46,10 @@ router.get('/data/:user_id', async (req, res) => {
 });
  
 
-router.get('/student-data/:roll_no' , student_data) ;
-router.get('/student-course-data/:roll_no' , course_data) ;
-router.get('/teacher-data/:id' , teacher_data) ;
-router.get('/teacher-course-data/:id' , teacher_course_data) ;
-router.get('/marks-data/:name' , marksData) ;
+// router.get('/student-data/:roll_no' , student_data) ;
+// router.get('/student-course-data/:roll_no' , course_data) ;
+// router.get('/teacher-data/:id' , teacher_data) ;
+// router.get('/teacher-course-data/:id' , teacher_course_data) ;
+// router.get('/marks-data/:name' , marksData) ;
 
 module.exports = router; 

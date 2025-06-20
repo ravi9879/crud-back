@@ -1,7 +1,7 @@
 const express = require('express');
 const User = require('../models/Studs')
 const router = express.Router(); 
-const { addCourse, teacherCourse } = require('../controllers/courseController'); 
+// const { addCourse, teacherCourse } = require('../controllers/courseController'); 
  
 router.post('/create', async (req, res) => {
     try {
@@ -16,8 +16,8 @@ router.post('/create', async (req, res) => {
 
 });
  
-router.post("/add-student-course" , addCourse ) ;
-router.post("/add-teacher-course" , teacherCourse ) ;
+// router.post("/add-student-course" , addCourse ) ;
+// router.post("/add-teacher-course" , teacherCourse ) ;
 
 module.exports = router ; 
 

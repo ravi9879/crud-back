@@ -3,7 +3,7 @@ const Log = require('../models/Login')
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt')   // same as for mysql  
-const { student_sign, teacher_sign } = require('../controllers/adminController');
+// const { student_sign, teacher_sign } = require('../controllers/adminController');
 const salt = 5;
 
 router.post('/sign-in', async (req, res) => {
@@ -28,7 +28,7 @@ router.post('/sign-in', async (req, res) => {
 
 });
 
-router.post("/student-sign" , student_sign) ;
-router.post("/teacher-sign" , teacher_sign) ;
+// router.post("/student-sign" , student_sign) ;
+// router.post("/teacher-sign" , teacher_sign) ;
 
 module.exports = router; 

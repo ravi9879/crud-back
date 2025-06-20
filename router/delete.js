@@ -5,7 +5,7 @@ const router = express.Router();
 const salt = 5;
 
 const { body, validationResult } = require('express-validator');
-const { deleteCourse } = require('../controllers/courseController');
+// const { deleteCourse } = require('../controllers/courseController');
 router.post('/delete', async (req, res) => {
     try {
         const { sno , user_id } = req.body;
@@ -24,7 +24,7 @@ router.post('/delete', async (req, res) => {
 });
 
 
-router.post('/delete-course' , deleteCourse) ;
+// router.post('/delete-course' , deleteCourse) ;
 
 
 module.exports = router; 

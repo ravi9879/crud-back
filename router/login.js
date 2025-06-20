@@ -5,7 +5,8 @@ const jwt = require('jsonwebtoken');
 const cookiePar = require('cookie-parser') 
 const fetchUser = require('../middleware/fetch_api.js');
 const bcrypt = require('bcrypt')   // same as for mysql  
-const {  student_login, teacher_login } = require('../controllers/adminController.js');
+// const {  student_login, teacher_login } = require('../controllers/adminController.js');
+
 router.post('/login', async (req, res) => {
     try {        
 
@@ -62,7 +63,7 @@ router.get('/fetch', fetchUser, async (req, res) => {
 
 
 
-router.post("/student-login" , student_login) ;
-router.post("/teacher-login" , teacher_login) ; 
+// router.post("/student-login" , student_login) ;
+// router.post("/teacher-login" , teacher_login) ; 
 
 module.exports = router; 
