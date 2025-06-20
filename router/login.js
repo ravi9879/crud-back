@@ -2,13 +2,13 @@ const express = require('express');
 const Log = require('../models/Login');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const cookiePar = require('cookie-parser')
-const bcrypt = require('bcrypt')   // same as for mysql 
+const cookiePar = require('cookie-parser') 
 const fetchUser = require('../middleware/fetch_api.js');
-
-
+const bcrypt = require('bcrypt')   // same as for mysql  
+const {  student_login, teacher_login } = require('../controllers/adminController.js');
 router.post('/login', async (req, res) => {
     try {        
+
         const { password, email_id } = req.body;
         const user = await Log.findOne({ email_id });    // finding data from mongo db
         if (!user) {
@@ -17,6 +17,7 @@ router.post('/login', async (req, res) => {
         else {
             const valid_password = await bcrypt.compare(password, user.hash_password);
             if (!valid_password) {
+
                 res.json("invalid credentials");
             }
             else {
@@ -33,10 +34,13 @@ router.post('/login', async (req, res) => {
                 return res.send({ Status: "Success", token: tok });
             }
         }
-    } catch (error) {
-        console.log('error2');
+    } catch (error) { 
+        res.statusCode = 500 ;
+        return res.send("error at server side") ;
+        
     }
 });
+
 
 
 router.get('/fetch', fetchUser, async (req, res) => {
@@ -55,5 +59,10 @@ router.get('/fetch', fetchUser, async (req, res) => {
 
     }
 })
+
+
+
+router.post("/student-login" , student_login) ;
+router.post("/teacher-login" , teacher_login) ; 
 
 module.exports = router; 

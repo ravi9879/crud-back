@@ -21,7 +21,8 @@ router.post('/update', async (req, res) => {
             const f = await User.deleteOne({ sno });    // finding data from mongo db
             await new_user.save();   // save data to mongo db
             // console.log(f);
-            return res.json({ Status: "Success" });
+            res.statusCode = 200 ;
+            return res.send({ Status: "Success" });
         }
 
 
@@ -30,11 +31,13 @@ router.post('/update', async (req, res) => {
             const f = await User.deleteOne({ sno });    // finding data from mongo db 
             await new_user.save();   // save data to mongo db
             // console.log(f);
-            return res.json({ Status: "Success" });
+            res.statusCode = 200 ;
+            return res.send({ Status: "Success" });
         }
 
     } catch (error) {
-        console.log('error');
+        res.statusCode = 500 ;
+        return res.send("error at server side") ;
     }
 });
 

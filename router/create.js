@@ -1,16 +1,11 @@
 const express = require('express');
 const User = require('../models/Studs')
-const router = express.Router();
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt')   // same as for mysql 
-
-const salt = 5;
-
-const { body, validationResult } = require('express-validator');
-
+const router = express.Router(); 
+const { addCourse, teacherCourse } = require('../controllers/courseController'); 
+ 
 router.post('/create', async (req, res) => {
     try {
-        const { sno, user_id, name, age } = req.body;
+        // const { sno, user_id, name, age } = req.body;
         const lo = User(req.body);
         // const lo = User(user_id , name , age ) ;
         await lo.save();   // save data to mongo db
@@ -20,8 +15,13 @@ router.post('/create', async (req, res) => {
     }
 
 });
+ 
+router.post("/add-student-course" , addCourse ) ;
+router.post("/add-teacher-course" , teacherCourse ) ;
 
-module.exports = router;
+module.exports = router ; 
+
+
 
 
 // router.post('/create', [

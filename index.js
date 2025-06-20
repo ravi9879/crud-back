@@ -8,7 +8,7 @@ const app = express();
 
 mconnect();
 
-
+ 
 // {
 //     // origin: ["http://localhost:3000/"],
 //     methods: ["POST", "GET"],
@@ -28,9 +28,38 @@ app.use('/', require('./router/delete'));
 app.use('/', require('./router/login'));
 app.use('/', require('./router/sign_in'));
 app.use('/', require('./router/data'));
-app.use('/', require('./router/update'));
+app.use('/', require('./router/update')); 
 
-app.get('/' ,(req,res)=>{
+
+
+app.use(cp());
+// app.use(cors());
+app.use(cors({
+        origin: "http://localhost:3000",
+        // preflightContinue : true ,
+        methods: ["POST", "GET"],
+        // credentials: true
+}));
+app.use(dy.json());
+app.use(dy.urlencoded({ extended: true }));
+
+// app.use((req , res , next) => { 
+//     console.log(req.cookies) ;
+//     // req.isLogin = true ;
+//     next() ;
+// })  
+ 
+app.use(require('./router/sample')); 
+app.use(require('./router/mid')); 
+app.use(require('./router/login'));
+app.use(require('./router/create'));
+app.use(require('./router/delete'));
+
+app.use(require('./router/sign_in'));
+app.use(require('./router/data'));
+app.use(require('./router/update'));
+  
+app.get('/' ,(req,res)=>{ 
     res.json("hello") ;
 }) ;
 

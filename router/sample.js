@@ -1,5 +1,6 @@
+
 const express = require('express') ;
-const Log = require('../models/Login')
+const Log = require('../models/Login')  
 const router = express.Router() ; 
 const jwt = require('jsonwebtoken') ;
 const bcrypt = require('bcrypt')   // same as for mysql 
@@ -32,6 +33,14 @@ router.post('/sample',async (req , res)=> {
     // return res.json(tok) ;  
     
 }) ;
+// router.post('/sample',async (req , res)=> { 
+//     const {id} = req.body ; 
+//     const tok = jwt.sign({id : id} , "jwt-secret-key"  ); 
+//     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzAyMTQxNTY0fQ.8AD2FhZjotIXSu4ku0VzuqoTZR3m-oaSgK0136yr16w" ;
+//     const data = jwt.verify(token , "jwt-secret-key" );  
+//     return res.json( {data} ); 
+    
+// }) ;
 
 
 
