@@ -16,8 +16,36 @@ router.post('/create', async (req, res) => {
 
 });
  
-// router.post("/add-student-course" , addCourse ) ;
-// router.post("/add-teacher-course" , teacherCourse ) ;
+router.post("/add-student-course" ,async (req, res, next) => {
+  try {
+    const { roll_no, course_name, course_id } = req.body;
+    const userData = await Student.find({ roll_no });
+    // console.log(userData[0].name) ;
+    const data = Student_Course({
+      roll_no,
+      name: userData[0].name,
+      course_id,
+      course_name,
+    });
+    // console.log(data) ;
+    await data.save();
+    res.send("added");
+  } catch (error) {
+    res.send("error");
+  }
+} ) ;
+
+router.post("/add-teacher-course" , async (req, res, next) => {
+  try {
+    const data = Teacher_Course(req.body);
+    // console.log(data) ;
+    await data.save();
+    res.send("added");
+  } catch (error) {
+    res.send("error");
+  }
+}
+ ) ;
 
 module.exports = router ; 
 

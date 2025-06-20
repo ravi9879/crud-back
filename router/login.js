@@ -63,7 +63,77 @@ router.get('/fetch', fetchUser, async (req, res) => {
 
 
 
-// router.post("/student-login" , student_login) ;
-// router.post("/teacher-login" , teacher_login) ; 
+router.post("/student-login" , async (req, res, next) => {
+    try {
+        // req.islogin = true ;
+        const { roll_no, password } = req.body;
+        const user = await Student.findOne({ roll_no });    // finding data from mongo db
+        if (!user) {
+            res.json("user does not exist");
+        }
+        else {
+            const valid_password = await bcrypt.compare(password, user.hash_password);
+            if (!valid_password) {
+                res.statusCode = 400;
+                res.send("invalid credentials");
+            }
+            else {
+                const exp = Date.now() + 1000 * 60 * 60 * 24;
+                const token = user.roll_no;
+                // const token = jwt.sign({id : user.email_id} , "jwt-secret-key"); 
+                // const decoded = jwt.verify(token, "jwt-secret-key");  
+                res.cookie("token", token, {
+                    expires: new Date(exp),
+                });
+
+                // return res.send({ Status: "Success", token: tok , islogin : islogin });
+                // console.log(user) 
+                // req.islogin = true ;
+                res.statusCode = 200;
+                return res.send({ Status: "Success", token: token });
+            }
+        }
+    } catch (error) {
+        res.statusCode = 500;
+        return res.send("error at server side");
+
+    }
+}) ;
+
+router.post("/teacher-login" , async (req, res, next) => {
+    try {
+        // req.islogin = true ; 
+        const { id , password } = req.body;
+        const user = await Teacher.findOne({ id });    // finding data from mongo db
+        if (!user) {
+            res.json("user does not exist");
+        }
+        else {
+            const valid_password = await bcrypt.compare(password, user.hash_password);
+            if (!valid_password) {
+                res.statusCode = 400;
+                res.send("invalid credentials");
+            }
+            else {
+                const exp = Date.now() + 1000 * 60 * 60 * 24;
+                const token = user.id;
+                // const token = jwt.sign({id : user.email_id} , "jwt-secret-key"); 
+                // const decoded = jwt.verify(token, "jwt-secret-key");  
+                res.cookie("token", token, {
+                    expires: new Date(exp),
+                });
+
+                // return res.send({ Status: "Success", token: tok , islogin : islogin });
+                // console.log(user) 
+                // req.islogin = true ;
+                res.statusCode = 200;
+                return res.send({ Status: "Success", token: token });
+            }
+        }
+    } catch (error) {
+        res.statusCode = 500;
+        return res.send("error at server side");
+    }
+}) ; 
 
 module.exports = router; 

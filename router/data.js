@@ -46,10 +46,29 @@ router.get('/data/:user_id', async (req, res) => {
 });
  
 
-// router.get('/student-data/:roll_no' , student_data) ;
-// router.get('/student-course-data/:roll_no' , course_data) ;
-// router.get('/teacher-data/:id' , teacher_data) ;
-// router.get('/teacher-course-data/:id' , teacher_course_data) ;
+router.get('/student-data/:roll_no' , async (req , res , next) => { 
+    const roll_no = req.params.roll_no ;
+    const data = await Student.find({roll_no}) ; 
+    res.send(data) ;
+}) ;
+
+router.get('/student-course-data/:roll_no' , async (req , res , next) => {
+    const roll_no = req.params.roll_no ;
+    const data = await Student_Course.find({roll_no}) ;
+    res.send(data) ;
+}) ;
+
+router.get('/teacher-data/:id' , async (req , res , next) => {
+    const id = req.params.id ;
+    const data = await Teacher.find({id}) ; 
+    res.send(data) ;
+}) ;
+
+router.get('/teacher-course-data/:id' , async (req , res , next) => {
+    const id= req.params.id ; 
+    const data = await Teacher_Course.find({id}) ; 
+    res.send(data) ;
+}) ;
 // router.get('/marks-data/:name' , marksData) ;
 
 module.exports = router; 

@@ -24,7 +24,26 @@ router.post('/delete', async (req, res) => {
 });
 
 
-// router.post('/delete-course' , deleteCourse) ;
+router.post('/delete-course' , async (req, res, next) => {
+  try {
+    const { roll_no, course_name, course_id } = req.body;
+    const userData = await Student_Course.deleteOne({
+      roll_no: roll_no,
+      // courseId: course_id,
+      course_name: course_name,
+    }); 
+    console.log(userData) ;
+    if (userData.deletedCount === 0) {
+      // res.statusCode = 400;
+      res.send("No Entry");
+    } else {
+      // res.statusCode = 200;
+      res.send("Deleted");
+    } 
+  } catch (error) {
+    res.send("error");
+  }
+}) ;
 
 
 module.exports = router; 
