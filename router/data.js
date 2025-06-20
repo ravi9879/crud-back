@@ -69,6 +69,17 @@ router.get('/teacher-course-data/:id' , async (req , res , next) => {
     const data = await Teacher_Course.find({id}) ; 
     res.send(data) ;
 }) ;
-// router.get('/marks-data/:name' , marksData) ;
+router.get('/marks-data/:name' ,  async (req, res, next) => {
+  try {
+    const name = req.params.name;
+    const { course_name, course_id } = req.body;
+    // console.log(course_id , course_name) ;
+    const data = await Student_Course.find({ course_name: name });
+    // console.log(data) ;
+    res.send(data);
+  } catch (error) {
+    res.send("error");
+  }
+}) ;
 
 module.exports = router; 
