@@ -14,24 +14,7 @@ mconnect();
 //     methods: ["POST", "GET"],
 //     credentials: true
 // }
-
-
-app.use(cp());
-app.use(cors());
-app.use(dy.json());
-app.use(dy.urlencoded({ extended: true }));
-app.use('/', require('./router/sample'));
-app.use('/', require('./router/mid'));
-// app.use('/', require('./router/user'));
-app.use('/', require('./router/create'));
-app.use('/', require('./router/delete'));
-app.use('/', require('./router/login'));
-app.use('/', require('./router/sign_in'));
-app.use('/', require('./router/data'));
-app.use('/', require('./router/update')); 
-
-
-
+ 
 app.use(cp());
 // app.use(cors());
 app.use(cors({
@@ -49,7 +32,7 @@ app.use(dy.urlencoded({ extended: true }));
 //     next() ;
 // })  
  
-app.use(require('./router/sample')); 
+// app.use(require('./router/sample')); 
 app.use(require('./router/mid')); 
 app.use(require('./router/login'));
 app.use(require('./router/create'));

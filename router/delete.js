@@ -1,8 +1,6 @@
 const express = require('express');
 const User = require('../models/Studs')
-const router = express.Router();
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt')   // same as for mysql 
+const router = express.Router(); 
 
 const salt = 5;
 
