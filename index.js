@@ -16,12 +16,13 @@ mconnect();
 app.use(cp()); 
 app.use(cors({
   origin: [
-    "https://crud-one-hazel.vercel.app",
+    // "https://crud-one-hazel.vercel.app",
     "http://localhost:3000"
   ],
   methods: ["POST", "GET"],
-  credentials: true,
-  optionsSuccessStatus: 200
+  preflightContinue : true 
+  // credentials: true,
+  // optionsSuccessStatus: 200
 }));
 app.use(dy.json());
 app.use(dy.urlencoded({ extended: true }));
