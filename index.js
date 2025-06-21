@@ -46,6 +46,8 @@ app.get("/", (req, res) => {
   res.json("hello");
 });
 
-app.listen(800, () => {
-  console.log("app started successsfuly");
-});
+// app.listen(800, () => {
+//   console.log("app started successsfuly");
+// });
+
+module.exports = app;
