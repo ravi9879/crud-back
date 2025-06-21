@@ -79,7 +79,7 @@ router.get('/marks-data/:name' ,  async (req, res, next) => {
     const name = req.params.name;
     const { course_name, course_id } = req.body;
     // console.log(course_id , course_name) ;
-    const data = await Student_Course.find({ course_name: name });
+    const data = await Student_Course.find({ course_name: course_name });
     // console.log(data) ;
     res.send(data);
   } catch (error) {
