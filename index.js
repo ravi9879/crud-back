@@ -19,7 +19,7 @@ app.use(cp());
 // app.use(cors());
 app.use(cors({
         origin: "http://localhost:3000",
-        // preflightContinue : true ,
+        preflightContinue : true ,
         methods: ["POST", "GET"],
         // credentials: true
 }));
