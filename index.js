@@ -5,18 +5,12 @@ const cors = require("cors");
 const dy = require("body-parser");
 const app = express();
 
-mconnect();
-
-// {
-//     // origin: ["http://localhost:3000/"],
-//     methods: ["POST", "GET"],
-//     credentials: true
-// }
+mconnect(); 
 
 app.use(cp()); 
 app.use(cors({
   origin: [
-    // "https://crud-one-hazel.vercel.app",
+    "https://crud-one-hazel.vercel.app",
     "http://localhost:3000"
   ],
   methods: ["POST", "GET"],
@@ -25,13 +19,13 @@ app.use(cors({
   // optionsSuccessStatus: 200
 }));
 app.use(dy.json());
-app.use(dy.urlencoded({ extended: true }));
-app.options('*', cors());
-// app.use((req , res , next) => {
-//     console.log(req.cookies) ;
-//     // req.isLogin = true ;
-//     next() ;
-// })
+app.use(dy.urlencoded({ extended: true })); 
+
+// // app.use((req , res , next) => {
+// //     console.log(req.cookies) ;
+// //     // req.isLogin = true ;
+// //     next() ;
+// // })
 
 // app.use(require('./router/sample'));
 app.use(require("./router/mid"));
@@ -47,8 +41,7 @@ app.get("/", (req, res) => {
   res.json("hello");
 });
 
-// app.listen(800, () => {
-//   console.log("app started successsfuly");
-// });
-
-module.exports = app;
+app.listen(800, () => {
+  console.log("app started successsfuly");
+});
+ 
